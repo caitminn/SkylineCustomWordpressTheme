@@ -6,12 +6,13 @@
 * Author: HackerYou
 * Author URI: http://hackeryou.com
 */
-
-@import 'normalize';
-@import 'typography';
+@import 'skeleton-sass/skeleton/themes/loader';
+// @import 'normalize';
+// @import 'typography';
+@import 'colors';
 @import 'navigation';
-@import 'sidebar';
-@import 'comments';
+// @import 'sidebar';
+// @import 'comments';
 @import 'footer';
 /*
 ====================================
@@ -27,24 +28,68 @@ body {
 	color: #333;
 }
 
-.container {
-	max-width: 1200px;
-	margin: 0 auto;
+// .container {
+// 	max-width: 1200px;
+// 	margin: 0 auto;
+// }
+
+// .content {
+// 	float: left;
+// 	width: 65%;
+// 	margin-right: 5%;
+// }
+
+// .full {
+// 	width: 100%;
+// }
+section.about.container, 
+section.services.container, 
+section.portfolio.container, 
+section.team.container, 
+section.counter.container,
+section.testimonials.container, 
+section.contact.container {
+	padding: 100px 0;
+}
+// HEADER SECTION //
+
+header {
+	height: 100vh;
 }
 
-.content {
-	float: left;
-	width: 65%;
-	margin-right: 5%;
+// ABOUT SECTION //
+section#about {
+	// height: 90vh;
+	background-color: $skyBlue;
+}
+.aboutContainer {
+	height: auto 100%;
 }
 
-.full {
-	width: 100%;
+// SERVICES SECTION //
+.services .servicesContainer {
+	.servicesContent {
+		.fa {
+			background: #bada55;
+			padding: 25px;
+			border-radius: 50%;
+		}
+	}
 }
 
-
-
-
+.counter .counterContent {
+	text-align: center;
+	span {
+		width: 65px;
+		display: block;
+		padding: 25px;
+		font-size: 4rem;
+		font-weight: bold;
+		text-align: center;
+		background: yellow;
+		border-radius: 50%;
+	}
+}
 
 
 

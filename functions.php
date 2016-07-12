@@ -22,7 +22,8 @@ function theme_setup() {
 	* You can allow clients to create multiple menus by
   * adding additional menus to the array. */
 	register_nav_menus( array(
-		'primary' => 'Primary Navigation'
+		'primary' => 'Primary Navigation',
+		'secondary' => 'Social Footer'
 	) );
 
 	/*
@@ -46,6 +47,8 @@ function hackeryou_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
 	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+
+	wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
 }
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_styles');
