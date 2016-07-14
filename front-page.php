@@ -305,14 +305,15 @@ if(have_posts()) {
 	</section>
 </section>
 
-<section class='socialFooter container'>
-	<div class='row'>
-		<?php wp_nav_menu( array(
-			'container' => false,
-			'theme_location' => 'secondary'
-		)); ?>
-	</div>
-	
+<section class='socialFooter'>
+	<section class='container'>
+		<div class='row'>
+			<?php wp_nav_menu( array(
+				'container' => false,
+				'theme_location' => 'secondary'
+			)); ?>
+		</div>
+	</section>
 </section>
 
 <?php

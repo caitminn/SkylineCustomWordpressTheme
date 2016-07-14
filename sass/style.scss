@@ -168,4 +168,30 @@ section.contact {
 	}
 }
 
+// SOCIAL FOOTER //
+section.socialFooter {
+	padding: 30px 0;
+	background: $smoke;
+	.row {
+		margin: 0;
+	}
+	ul.menu {
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		li {
+			margin: 0 30px;
+			.fa {
+				padding: 8px;
+				font-size: 26px;
+				color: $skyblue;
+				transition: all 0.3s ease;
+				&:hover {
+					background: $skyblue;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
 
