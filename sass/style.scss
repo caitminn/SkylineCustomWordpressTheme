@@ -6,51 +6,41 @@
 * Author: HackerYou
 * Author URI: http://hackeryou.com
 */
-@import 'skeleton-sass/skeleton/themes/loader';
 // @import 'normalize';
-// @import 'typography';
 @import 'colors';
-@import 'navigation';
+@import 'skeleton-sass/skeleton/themes/loader';
+// @import 'typography';
+// @import 'navigation';
 // @import 'sidebar';
 // @import 'comments';
-@import 'footer';
+// @import 'footer';
 /*
 ====================================
 Default Styling
 ====================================
 */
-
 img {
 	max-width: 100%;
 }
 
 body {
-	color: #333;
+	color: $fontgrey;
 }
 
-// .container {
-// 	max-width: 1200px;
-// 	margin: 0 auto;
-// }
-
-// .content {
-// 	float: left;
-// 	width: 65%;
-// 	margin-right: 5%;
-// }
-
-// .full {
-// 	width: 100%;
-// }
-section.about.container, 
-section.services.container, 
-section.portfolio.container, 
-section.team.container, 
-section.counter.container,
-section.testimonials.container, 
-section.contact.container {
+section.about, 
+section.services, 
+section.portfolio, 
+section.team, 
+section.counter,
+section.testimonials, 
+section.contact {
 	padding: 100px 0;
 }
+
+.sectionTitle {
+    margin-bottom: 85px;
+}
+
 // HEADER SECTION //
 
 header {
@@ -58,39 +48,124 @@ header {
 }
 
 // ABOUT SECTION //
-section#about {
-	// height: 90vh;
-	background-color: $skyBlue;
-}
-.aboutContainer {
-	height: auto 100%;
-}
-
-// SERVICES SECTION //
-.services .servicesContainer {
-	.servicesContent {
-		.fa {
-			background: #bada55;
-			padding: 25px;
-			border-radius: 50%;
+section.about {
+	color: #fff;
+	.sectionTitle {
+		h2 {
+			color: #fff;
 		}
 	}
+	.aboutContainer {
+		height: auto 100%;
+		color: #fff;
+		h3 {
+			color: #fff;
+		}
+	}
+}
+
+
+// SERVICES SECTION //
+section.services {
+	.servicesContainer {
+		.servicesContent {
+			.fa {
+				padding: 25px;
+				background: $goldenyellow;
+				border-radius: 50%;
+				color: #fff;
+				font-size: 32px;
+			}
+		}
+	}
+}
+//
+
+// PORTFOLIO SECTION //
+section.portfolio {
+	background: $goldenyellow;
+}
+
+section.portfolio {
+	.sectionTitle {
+		h2 {
+			color: #fff;
+		}
+		hr {
+			background: #fff;
+		}
+	}
+}
+
+// TEAM SECTION //
+section.team {
+	.teamContainer .teamContent span {
+		.fa {
+			padding-right: 10px;
+			font-size: 16px;
+			color: $goldenyellow;
+			&:hover {
+				color: $skyblue;
+			}
+		}
+	}
+}
+// ACHIEVEMENT SECTION //
+section.counter {
+	background: $goldenyellow;
 }
 
 .counter .counterContent {
 	text-align: center;
 	span {
-		width: 65px;
+		width: 120px;
+		height: 120px;
 		display: block;
-		padding: 25px;
-		font-size: 4rem;
+		margin: 0 auto;
+		// margin-bottom: 20px;
+		padding: 25px 0;
+		color: #fff;
+		font-size: 48px;
 		font-weight: bold;
 		text-align: center;
-		background: yellow;
+		background: $skyblue;
+		border: 0px solid #fff;
 		border-radius: 50%;
 	}
 }
 
+// TESTIMONIALS SECTION //
+section.testimonials {
+	background: $smoke;
+}
 
+section.testimonials .testimonialContainer .testimonialContent {
+		blockquote {
+			margin-bottom: 20px;
+		&::after {
+			content: '';
+		    position: absolute;
+		    bottom: -14px;
+		    margin-left: 10px;
+		    border-top: 14px solid #fff;
+		    border-left: 14px solid transparent;
+		    border-right: 14px solid transparent;
+		}
+	}
+}
+
+// CONTACT SECTION 
+section.contact {
+	background: $skyblue;
+	color: #fff;
+}
+
+section.contact {
+	.sectionTitle {
+		h2 {
+			color: #fff;
+		}
+	}
+}
 
 
