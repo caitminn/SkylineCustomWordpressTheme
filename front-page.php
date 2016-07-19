@@ -11,20 +11,29 @@ if(have_posts()) {
 		<?php 
 		$heroImage = get_field('hero_image');
 		?>
-<header style='background: url("<?php echo $heroImage['url'] ?>") center center no-repeat; background-size: cover;'>
+<header style='background: linear-gradient(45deg, rgba(30,159,180,0.15) 0%,rgba(30,159,180,0.25) 100%), url("<?php echo $heroImage['url'] ?>") center center no-repeat; background-size: cover;'>
 
-	<nav class="mainNav container" id='mainNav'>
-		<div class='row'>
-			<h5 class='three columns'><?php the_field('business_name'); ?></h5>
-			<?php wp_nav_menu( array(
-			    'container' => true,
-			    'theme_location' => 'primary'
-			)); ?>
-		</div>
+	<nav class='mainNav' id='mainNav'>
+		<section class='container'>
+			<div class='row'>
+				<h5 class='three columns'><?php the_field('business_name'); ?></h5>
+				<?php wp_nav_menu( array(
+				    'container' => true,
+				    'theme_location' => 'primary'
+				)); ?>
+			</div>
+		</section>
 	</nav>
 	<section class='heroText'>
-		<h1 class=''><?php the_field('header_hero_text'); ?></h1>
-		<h3 class=''><?php the_field('header_tagline'); ?></h3>
+		<section class='container'>
+			<div class='row'>
+				<h1 class=''><?php the_field('header_hero_text'); ?></h1>
+				<h4 class=''><?php the_field('header_tagline'); ?></h4>
+				<div class='buttonContainer'>
+					<button><?php the_field('button_content'); ?></button>
+				</div>
+			</div>
+		</section>
 	</section>
 </header>
 

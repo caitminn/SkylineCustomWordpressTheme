@@ -41,12 +41,58 @@ section.contact {
     margin-bottom: 85px;
 }
 
+.buttonContainer {
+	margin: 0 8px;
+}
+
 // HEADER SECTION //
 
 header {
 	height: 100vh;
 }
 
+.mainNav {
+	margin-bottom: 20px;
+	padding: 20px;
+	ul {
+		display: flex;
+		justify-content: flex-end;
+	}
+}
+.mainNav li a {
+	padding: 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	&:hover {
+		cursor: pointer;
+		color: $skyblue;
+	}
+}
+
+.heroText {
+	position: relative;
+	padding-top: 200px;
+	// padding-right: 0;
+	// padding-left: 0;
+	// padding-bottom: 220px;
+	h1, h4 {
+		color: #fff;
+	}
+	span {
+		color: $skyblue;
+	}
+}
+.heroText .buttonContainer {
+	margin-top: 60px;
+	button {
+		padding: 10px 16px;
+	}
+}
 // ABOUT SECTION //
 section.about {
 	color: #fff;
@@ -112,9 +158,17 @@ section.team {
 }
 // ACHIEVEMENT SECTION //
 section.counter {
-	background: $goldenyellow;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	background: linear-gradient(0deg,rgba(254,183,55,0.85),rgba(254, 183, 55, 0.85)), url('images/achieve.jpg');
+	background-size: cover;
+	background-attachment: fixed;
 }
 
+section.counter .row {
+	margin-bottom: 0;
+}
 .counter .counterContent {
 	text-align: center;
 	span {
@@ -122,8 +176,8 @@ section.counter {
 		height: 120px;
 		display: block;
 		margin: 0 auto;
-		// margin-bottom: 20px;
-		padding: 25px 0;
+	    margin-bottom: 20px;
+		padding: 45px 0;
 		color: #fff;
 		font-size: 48px;
 		font-weight: bold;
