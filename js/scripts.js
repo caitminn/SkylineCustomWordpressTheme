@@ -1,5 +1,9 @@
 $(function(){
 
-	console.log("It's working");
+	$('.grid').isotope({
+	  layoutMode: 'fitRows',
+	  itemSelector: '.grid-item'
+	});
+
 
 });

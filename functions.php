@@ -69,6 +69,14 @@ function hackeryou_scripts() {
   );
 
   wp_enqueue_script(
+  	'isotope',
+  	"https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js",
+  	false, //dependencies
+  	null, //version number
+  	true //load in footer
+  );
+
+  wp_enqueue_script(
     'plugins', //handle
     get_template_directory_uri() . '/js/plugins.js', //source
     false, //dependencies

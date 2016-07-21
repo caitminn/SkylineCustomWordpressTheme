@@ -8,9 +8,7 @@ if(have_posts()) {
 		the_post();
 ?>
 
-		<?php 
-		$heroImage = get_field('hero_image');
-		?>
+<?php $heroImage = get_field('hero_image'); ?>
 <header style='background: linear-gradient(45deg, rgba(30,159,180,0.15) 0%,rgba(30,159,180,0.25) 100%), url("<?php echo $heroImage['url'] ?>") center center no-repeat; background-size: cover;'>
 
 	<nav class='mainNav' id='mainNav'>
@@ -37,25 +35,25 @@ if(have_posts()) {
 	</section>
 </header>
 
-<?php 
-	$aboutImage = get_field('about_background_image');
-?>
+<!-- ABOUT SECTION -->
+<?php $aboutImage = get_field('about_background_image'); ?>
 <section class='about' id='about' style='background: radial-gradient(circle at 65%,rgba(135,170,175,0.7) 15%,rgba(114,168,176,0.9) 30%,#1e9fb4 60%), url("<?php echo $aboutImage['url'] ?>") center center no-repeat; background-size: cover;'>
 	<section class='container'>
-	<div class='sectionTitle'>
-		<h2><?php the_field('about_title'); ?></h2>
-		<hr>
-	</div>
-	<section class='aboutContainer row'>
-		<div class='six columns'>
-			<h3><?php the_field('about_tagline'); ?></h3>
-			<p><?php the_field('about_content'); ?></p>
+		<div class='sectionTitle'>
+			<h2><?php the_field('about_title'); ?></h2>
+			<hr>
 		</div>
-	</section>
-</section>	
-	
-</section>
+		<section class='aboutContainer row'>
+			<div class='six columns'>
+				<h3><?php the_field('about_tagline'); ?></h3>
+				<p><?php the_field('about_content'); ?></p>
+			</div>
+		</section> <!-- close .aboutContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .about -->
+<!-- ABOUT ENDS -->
 
+<!-- SERVICES SECTION -->
 <section class='services' id='services'> 
 	<section class='container'> 
 		<div class='sectionTitle'>
@@ -64,28 +62,29 @@ if(have_posts()) {
 		</div>
 		<section class='servicesContainer row'> 
 			<div class='servicesContent three columns'>
-				<p><?php the_field('service_1_icon'); ?></p>
+				<span><?php the_field('service_1_icon'); ?></span>
 				<h4><?php the_field('service_1_title'); ?></h4>
 				<p><?php the_field('service_1_description'); ?></p>
 			</div>
 			<div class='servicesContent three columns'>
-				<p><?php the_field('service_2_icon'); ?></p>
+				<span><?php the_field('service_2_icon'); ?></span>
 				<h4><?php the_field('service_2_title'); ?></h4>
 				<p><?php the_field('service_2_description'); ?></p>
 			</div>
 			<div class='servicesContent three columns'>
-				<p><?php the_field('service_3_icon'); ?></p>
+				<span><?php the_field('service_3_icon'); ?></span>
 				<h4><?php the_field('service_3_title'); ?></h4>
 				<p><?php the_field('service_3_description'); ?></p>
 			</div>
 			<div class='servicesContent three columns'>
-				<p><?php the_field('service_4_icon'); ?></p>
+				<span><?php the_field('service_4_icon'); ?></span>
 				<h4><?php the_field('service_4_title'); ?></h4>
 				<p><?php the_field('service_4_description'); ?></p>
 			</div>
-		</section>
-	</section>
-</section>
+		</section> <!-- close .servicesContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .services -->
+<!-- SERVICES ENDS -->
 
 <!-- PORTFOLIO SECTION -->
 <section class='portfolio' id='portfolio'>
@@ -94,52 +93,42 @@ if(have_posts()) {
 			<h2><?php the_field('portfolio_title'); ?></h2>
 			<hr>
 		</div>
-		<section class='portfolioContainer'>
+		<div id="filters" class="button-group">  
+			<button class="button is-checked" data-filter="*">show all</button>
+			<button class="button" data-filter=".metal">metal</button>
+			<button class="button" data-filter=".transition">transition</button>
+			<button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
+		</div>
+		<section class='portfolioContainer row grid'>
 			<?php 
 				$portfolioArgs = array(
 					'post_type' => 'portfolio',
 					'posts_per_page' => -1,
-					'order' => 'DESC',
-					// 'orderby' => 'title'
+					'order' => 'ASC',
+					'orderby' => 'title'
 				);
 				$portfolioQuery = new WP_Query($portfolioArgs);
 					if( $portfolioQuery -> have_posts() ) {
 						while( $portfolioQuery -> have_posts() ) {
-							$portfolioQuery -> the_post();
+							$portfolioQuery-> the_post();
 			?>
-			<section class='portfolioItem'>
-				<figure>
-					<?php 
-					$portfolioImage = get_field('portfolio_image');
-					?>
-					<img src='<?php echo $portfolioImage["url"]?>' />
-				</figure>
-				<div class='portfolioContent'>
-					<h3><?php the_title(); ?></h3>
-					<p><?php the_field('portfolio_description'); ?></p>
-					<ul>
-						<?php
-							while(has_sub_field('portfolio_tags')) {
-						?>
-						<li><?php the_sub_field('tags')?></li>
-						<?php
-						}
-						?>
-				</ul>
-				<a href='<?php the_field("portfolio_item_link"); ?>' target="_"><button> View Live</button></a>
-				</div>
-			</section>
-
-			<?php
-						}
-					}
-				wp_reset_postdata();
-			?>
+				<section class='portfolioItem three columns grid-item'>
+					<?php $portfolioImage = get_field('image'); ?>
+					<a href="<?php the_permalink() ?>">
+						<img src="<?php echo $portfolioImage['url']?>" />
+					</a>
+				</section>
+					<?php
+				}
+			}
+			wp_reset_postdata();
+        ?>
 		</section> <!-- close .portfolioContainer -->
 	</section> <!-- close .container -->
 </section> <!-- close .portfolio -->
 <!-- PORTFOLIO ENDS -->
 
+<!-- TEAM SECTION -->
 <section class='team' id='team'>
 	<section class='container'>
 		<div class='sectionTitle'>
@@ -148,10 +137,8 @@ if(have_posts()) {
 		</div>
 		<section class='teamContainer row'> 
 			<div class='teamContent three columns'>
-				<?php 
-				$teamMember1 = get_field('team_member_1_photo');
-				?>
-				<img src="<?php echo $teamMember1['url']?>" />
+				<?php $teamMember1 = get_field('team_member_1_photo'); ?>
+				<img src="<?php echo $teamMember1['url']?> "/>
 				<h5><?php the_field('team_member_1_name'); ?></h5>
 				<p><?php the_field('team_member_1_title'); ?></p>
 				<span>
@@ -165,10 +152,8 @@ if(have_posts()) {
 				</span>
 			</div>
 			<div class='teamContent three columns'>
-				<?php 
-				$teamMember2 = get_field('team_member_2_photo');
-				?>
-				<img src="<?php echo $teamMember2['url']?>" />
+				<?php $teamMember2 = get_field('team_member_2_photo'); ?>
+				<img src=" <?php echo $teamMember2['url']?> "/>
 				<h5><?php the_field('team_member_2_name'); ?></h5>
 				<p><?php the_field('team_member_2_title'); ?></p>
 				<span>
@@ -182,9 +167,7 @@ if(have_posts()) {
 				</span>
 			</div>
 			<div class='teamContent three columns'>
-				<?php 
-				$teamMember3 = get_field('team_member_3_photo');
-				?>
+				<?php $teamMember3 = get_field('team_member_3_photo'); ?>
 				<img src="<?php echo $teamMember3['url']?>" />
 				<h5><?php the_field('team_member_3_name'); ?></h5>
 				<p><?php the_field('team_member_3_title'); ?></p>
@@ -199,9 +182,7 @@ if(have_posts()) {
 				</span>
 			</div>
 			<div class='teamContent three columns'>
-				<?php 
-				$teamMember4 = get_field('team_member_4_photo');
-				?>
+				<?php $teamMember4 = get_field('team_member_4_photo'); ?>
 				<img src="<?php echo $teamMember4['url']?>" />
 				<h5><?php the_field('team_member_4_name'); ?></h5>
 				<p><?php the_field('team_member_4_title'); ?></p>
@@ -215,10 +196,12 @@ if(have_posts()) {
 					<a href=" <?php the_field('team_member_4_social_link_3'); ?> "> <?php the_field('team_member_4_social_icon_3'); ?></a>
 				</span>
 			</div>
-		</section>
-	</section>
-</section>
+		</section> <!-- close .teamContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .team -->
+<!-- TEAM ENDS -->
 
+<!-- COUNTER SECTION -->
 <section class='counter'> 
 	<section class='container'>
 		<section class='row'> 
@@ -238,10 +221,12 @@ if(have_posts()) {
 				<span><?php the_field('counter_4_number'); ?></span>
 				<h4><?php the_field('counter_4_title'); ?></h4>
 			</div>
-		</section>
-	</section>
-</section>
+		</section> <!-- close .counterContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .counter -->
+<!-- COUNTER ENDS -->
 
+<!-- TESTIMONIALS SECTION -->
 <section class='testimonials' id='testimonials'>
 	<section class='container'>
 		<div class='sectionTitle'>
@@ -251,9 +236,7 @@ if(have_posts()) {
 		<section class='testimonialsContainer row'> 
 			<div class='testimonialsContent four columns'>
 				<blockquote><p><?php the_field('testimonial_1_content'); ?></p></blockquote>
-				<?php 
-				$endorser1 = get_field('testimonial_1_endorser_image');
-				?>
+				<?php $endorser1 = get_field('testimonial_1_endorser_image'); ?>
 				<div class='endorserContent'>
 					<img src="<?php echo $endorser1['url']?>" />
 					<h6><?php the_field('testimonial_1_endorser_name'); ?></h6>
@@ -262,9 +245,7 @@ if(have_posts()) {
 			</div>
 			<div class='testimonialsContent four columns'>
 				<blockquote><p><?php the_field('testimonial_2_content'); ?></p></blockquote>
-				<?php 
-				$endorser2 = get_field('testimonial_2_endorser_image');
-				?>
+				<?php $endorser2 = get_field('testimonial_2_endorser_image'); ?>
 				<div class='endorserContent'>
 					<img src="<?php echo $endorser2['url']?>" />
 					<h6><?php the_field('testimonial_2_endorser_name'); ?></h6>
@@ -273,19 +254,19 @@ if(have_posts()) {
 			</div>
 			<div class='testimonialsContent four columns'>
 				<blockquote><p><?php the_field('testimonial_3_content'); ?></p></blockquote>
-				<?php 
-				$endorser3 = get_field('testimonial_3_endorser_image');
-				?>
+				<?php $endorser3 = get_field('testimonial_3_endorser_image'); ?>
 				<div class='endorserContent'>
 					<img src="<?php echo $endorser3['url']?>" />
 					<h6><?php the_field('testimonial_3_endorser_name'); ?></h6>
 					<p><?php the_field('testimonial_3_endorser_job_title'); ?></p>
 				</div>
 			</div>
-		</section>
-	</section>
-</section> 
+		</section> <!-- close .testimonialsContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .testimonials -->
+<!-- TESTIMONIALS ENDS -->
 
+<!-- CONTACT SECTION -->
 <section class='contact' id='contact'>
 	<section class='container'>
 		<div class='sectionTitle'>
@@ -294,8 +275,7 @@ if(have_posts()) {
 		</div>
 		<section class='contactContainer row'>
 			<aside class='contactInfo four columns'>
-				<h3><?php the_field('contact_info'); ?></h3>
-				
+				<h3><?php the_field('contact_info_title'); ?></h3>
 			</aside>
 			<section class='contactForm eight columns'>
 				<h3><?php the_field('contact_form_title'); ?></h3>
@@ -310,18 +290,20 @@ if(have_posts()) {
 				</div>
 				</form>
 			</section>
-		</section>
-	</section>
-</section>
+		</section> <!-- close .contactContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .contact -->
+<!-- CONTACT ENDS -->
 
+<!-- SOCIAL SECTION -->
 <section class='socialFooter'>
 	<section class='container'>
-		<div class='row'>
+		<section class='row'>
 			<?php wp_nav_menu( array(
 				'container' => false,
 				'theme_location' => 'secondary'
 			)); ?>
-		</div>
+		</section>
 	</section>
 </section>
 

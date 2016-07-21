@@ -112,20 +112,19 @@ section.about {
 
 
 // SERVICES SECTION //
-section.services {
-	.servicesContainer {
-		.servicesContent {
-			.fa {
-				padding: 25px;
-				background: $goldenyellow;
-				border-radius: 50%;
-				color: #fff;
-				font-size: 32px;
-			}
-		}
+section.services .servicesContainer .servicesContent {
+	h4 {
+		margin-bottom: 20px;
+	}
+	.fa {
+		margin-bottom: 35px;
+		padding: 25px;
+		background: $goldenyellow;
+		border-radius: 50%;
+		color: #fff;
+		font-size: 32px;
 	}
 }
-//
 
 // PORTFOLIO SECTION //
 section.portfolio {
@@ -143,9 +142,43 @@ section.portfolio {
 	}
 }
 
+* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+  max-width: 1200px;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-item {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #0D8;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.7);
+}
+
 // TEAM SECTION //
-section.team {
-	.teamContainer .teamContent span {
+section.team .teamContainer .teamContent {
+	img {
+		margin-bottom: 25px;
+	}
+	h5 {
+		margin-bottom: 15px;
+	}
+	p {
+		margin-bottom: 20px;
+	}
+	span {
 		.fa {
 			padding-right: 10px;
 			font-size: 16px;
@@ -156,6 +189,7 @@ section.team {
 		}
 	}
 }
+
 // ACHIEVEMENT SECTION //
 section.counter {
 	height: 300px;
@@ -212,15 +246,18 @@ section.testimonials .testimonialContainer .testimonialContent {
 section.contact {
 	background: $skyblue;
 	color: #fff;
-}
-
-section.contact {
-	.sectionTitle {
-		h2 {
-			color: #fff;
-		}
+	h3 {
+		color: #fff;
 	}
 }
+
+section.contact .sectionTitle {
+	h2 {
+		color: #fff;
+	}
+}
+
+
 
 // SOCIAL FOOTER //
 section.socialFooter {
