@@ -7,8 +7,9 @@
 * Author URI: http://hackeryou.com
 */
 // @import 'normalize';
-@import 'colors';
 @import 'skeleton-sass/skeleton/themes/loader';
+@import 'colors';
+@import 'single';
 // @import 'typography';
 // @import 'navigation';
 // @import 'sidebar';
@@ -49,39 +50,77 @@ section.contact {
 
 header {
 	height: 100vh;
-}
-
-.mainNav {
-	margin-bottom: 20px;
-	padding: 20px;
-	ul {
-		display: flex;
-		justify-content: flex-end;
+	.mainNav {
+		// margin: 10px 0;
+		padding: 20px;
+		transition: all 0.3s ease;
+		.container {
+			margin-bottom: 0;
+		}
+		.row {
+			margin-bottom: 0;
+		}
+		h3 {
+			visibility: hidden;
+			margin-bottom: 0;
+		}
+		ul {
+			display: flex;
+			justify-content: flex-end;
+			margin-bottom: 0;
+			li {
+				margin-bottom: 0;
+			}
+		}
 	}
-}
-.mainNav li a {
-	padding: 20px;
-	text-decoration: none;
-	text-transform: uppercase;
-	color: #ffffff;
-	font-size: 12px;
-	letter-spacing: 1px;
-	font-weight: 500;
-	transition: all 0.3s ease;
-	&:hover {
+	.mainNav a {
+		padding: 0 15px;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $white;
+		font-size: 12px;
+		letter-spacing: 1px;
+		font-weight: 500;
+		&:hover {
+			cursor: pointer;
+			color: $skyblue;
+		}
+	}
+	.active {
+	    padding: 20px;
+		background: rgba(73, 75, 85, 0.95);
+		transition: all 0.8s ease;
+		z-index: 9;
+		h3 {
+			visibility: visible;
+			color: $skyblue;
+		}
+		a {
+			&:hover {
+				color: $goldenyellow;
+			}
+			&:active {
+				color: $goldenyellow;
+			}
+		}
+	}
+	// HAMBURGER MENU //
+	.mainNav .fa {
+		display: none;
 		cursor: pointer;
-		color: $skyblue;
+	}
+	.mainNav .fa-bars {
+		// position: relative;
+		top: 30px;
+		left: 30px;
+		z-index: 10;
 	}
 }
-
 .heroText {
 	position: relative;
 	padding-top: 200px;
-	// padding-right: 0;
-	// padding-left: 0;
-	// padding-bottom: 220px;
 	h1, h4 {
-		color: #fff;
+		color: $white;
 	}
 	span {
 		color: $skyblue;
@@ -93,19 +132,20 @@ header {
 		padding: 10px 16px;
 	}
 }
+
 // ABOUT SECTION //
 section.about {
-	color: #fff;
+	color: $white;
 	.sectionTitle {
 		h2 {
-			color: #fff;
+			color: $white;
 		}
 	}
 	.aboutContainer {
 		height: auto 100%;
-		color: #fff;
+		color: $white;
 		h3 {
-			color: #fff;
+			color: $white;
 		}
 	}
 }
@@ -121,7 +161,7 @@ section.services .servicesContainer .servicesContent {
 		padding: 25px;
 		background: $goldenyellow;
 		border-radius: 50%;
-		color: #fff;
+		color: $white;
 		font-size: 32px;
 	}
 }
@@ -134,38 +174,46 @@ section.portfolio {
 section.portfolio {
 	.sectionTitle {
 		h2 {
-			color: #fff;
+			color: $white;
 		}
 		hr {
-			background: #fff;
+			background: $white;
 		}
 	}
 }
 
-* ---- grid ---- */
-
-.grid {
-  background: #DDD;
-  max-width: 1200px;
+section.portfolio .portfolioItem {
+	.portfolioImage {
+		width: 100%;
+		position: relative;
+		transition: all 0.3s ease;
+		img {
+			display: block;
+		}
+		figcaption {
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    padding-top: 80%;
+		    background-color: rgba(30, 159, 180, 0.5);
+		    text-align: center;
+		    visibility: hidden;
+		    opacity: 0;
+		    transition: opacity 0.5s ease;
+		    h4 {
+			    color: $white;	
+		    }
+		}
+		&:hover figcaption {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 }
 
-/* clear fix */
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}
 
-/* ---- .grid-item ---- */
-
-.grid-item {
-  float: left;
-  width: 100px;
-  height: 100px;
-  background: #0D8;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.7);
-}
 
 // TEAM SECTION //
 section.team .teamContainer .teamContent {
@@ -183,6 +231,7 @@ section.team .teamContainer .teamContent {
 			padding-right: 10px;
 			font-size: 16px;
 			color: $goldenyellow;
+			transition: all 0.3s ease;
 			&:hover {
 				color: $skyblue;
 			}
@@ -212,12 +261,12 @@ section.counter .row {
 		margin: 0 auto;
 	    margin-bottom: 20px;
 		padding: 45px 0;
-		color: #fff;
+		color: $white;
 		font-size: 48px;
 		font-weight: bold;
 		text-align: center;
 		background: $skyblue;
-		border: 0px solid #fff;
+		border: 0px solid $white;
 		border-radius: 50%;
 	}
 }
@@ -235,7 +284,7 @@ section.testimonials .testimonialContainer .testimonialContent {
 		    position: absolute;
 		    bottom: -14px;
 		    margin-left: 10px;
-		    border-top: 14px solid #fff;
+		    border-top: 14px solid $white;
 		    border-left: 14px solid transparent;
 		    border-right: 14px solid transparent;
 		}
@@ -245,15 +294,60 @@ section.testimonials .testimonialContainer .testimonialContent {
 // CONTACT SECTION 
 section.contact {
 	background: $skyblue;
-	color: #fff;
+	color: $white;
+	.sectionTitle {
+		h2 {
+			color: $white;
+		}
+	} 
 	h3 {
-		color: #fff;
+		margin-bottom: 40px;
+		color: $white;
+	}
+}
+section.contact .contactInfo {
+	span {
+		padding-bottom: 35px;
+		display: flex;
+		flex-wrap: wrap;
+		p {
+			font-weight: 400;
+		}
+		a {
+			text-decoration: none;
+			color: $white;
+			cursor: pointer;
+		}
+	}
+	.icon {
+		width: 25px;
+		margin-right: 20px;
+		display: inline-block;
+		text-align: center;
+		.fa {
+			font-size: 28px;
+			color: rgba(253,253,253,0.3);
+		}
 	}
 }
 
-section.contact .sectionTitle {
-	h2 {
-		color: #fff;
+section.contact .contactForm form {
+	.row {
+		margin-bottom: 0;
+	}
+	input[type=text], 
+	input[type=email],
+	textarea {
+		margin-bottom: 15px;
+	    padding: 6px 12px;
+		width:100%;
+	}
+	input[type=submit] {
+		&:hover {
+			color: $skyblue;
+			background: $white;
+			border: 2px solid $white;
+		}
 	}
 }
 
@@ -266,23 +360,77 @@ section.socialFooter {
 	.row {
 		margin: 0;
 	}
-	ul.menu {
-		margin: 0;
-		display: flex;
-		justify-content: center;
-		li {
-			margin: 0 30px;
-			.fa {
-				padding: 8px;
-				font-size: 26px;
-				color: $skyblue;
-				transition: all 0.3s ease;
-				&:hover {
-					background: $skyblue;
-					color: #fff;
-				}
+}
+section.socialFooter ul.menu {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	li {
+		margin: 0 30px;
+		.fa {
+			padding: 8px;
+			font-size: 26px;
+			color: $skyblue;
+			transition: all 0.3s ease;
+			&:hover {
+				background: $skyblue;
+				color: $white;
 			}
 		}
 	}
 }
 
+// FOOTER //
+footer {
+	text-align: center;
+}
+
+// MEDIA QUERIES //
+// Portrait tablet and small desktops //
+@media (max-width: 940px) {
+// HEADER SECTION //
+	header {
+	 	// HAMBURGER MENU //
+		.mainNav .fa {
+			display: block;
+			cursor: pointer;
+			color: $darkgrey;
+			font-size: 30px;
+		}
+		.fa-bars {
+			position: fixed;
+			z-index: 10;
+		}
+		.mainNav ul#menu-main-menu {
+			position: fixed;
+			top: 10px;
+		    left: 10px;
+		    height: auto;
+		    width: 30%;
+			opacity: 0;
+			visibility: hidden;
+			flex-flow: column wrap;
+			text-align: center;
+			justify-content: space-around;
+			border-radius: 2px;
+			transition: all 0.3s ease;
+			transform: scale(1.2);
+			z-index: 5;
+			li {
+				padding: 10px 0;
+			}
+				a {
+					color: $skyblue;
+					&:hover {
+						color: $goldenyellow;
+					}
+				}
+		}
+		ul#menu-main-menu.show {
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+		// END HAMBURGER //
+	}
+}

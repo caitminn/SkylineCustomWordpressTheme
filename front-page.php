@@ -9,16 +9,21 @@ if(have_posts()) {
 ?>
 
 <?php $heroImage = get_field('hero_image'); ?>
-<header style='background: linear-gradient(45deg, rgba(30,159,180,0.15) 0%,rgba(30,159,180,0.25) 100%), url("<?php echo $heroImage['url'] ?>") center center no-repeat; background-size: cover;'>
+<header id='home' style='background: linear-gradient(45deg, rgba(30,159,180,0.15) 0%,rgba(30,159,180,0.25) 100%), url("<?php echo $heroImage['url'] ?>") center center no-repeat; background-size: cover;'>
 
 	<nav class='mainNav' id='mainNav'>
+		<div class="fa fa-bars fa-2x"></div>
 		<section class='container'>
 			<div class='row'>
-				<h5 class='three columns'><?php the_field('business_name'); ?></h5>
-				<?php wp_nav_menu( array(
-				    'container' => true,
-				    'theme_location' => 'primary'
-				)); ?>
+				<div class='three columns'>
+					<h3><?php the_field('business_name'); ?></h3>
+				</div>
+				<div class='nine columns'>
+					<?php wp_nav_menu( array(
+					    'container' => true,
+					    'theme_location' => 'primary'
+					)); ?>
+				</div>
 			</div>
 		</section>
 	</nav>
@@ -28,7 +33,8 @@ if(have_posts()) {
 				<h1 class=''><?php the_field('header_hero_text'); ?></h1>
 				<h4 class=''><?php the_field('header_tagline'); ?></h4>
 				<div class='buttonContainer'>
-					<button><?php the_field('button_content'); ?></button>
+					<?php $url = site_url('/#about', 'http'); ?>
+					<a href='<?php echo $url; ?>'><button><?php the_field('button_content'); ?></button></a>
 				</div>
 			</div>
 		</section>
@@ -93,30 +99,26 @@ if(have_posts()) {
 			<h2><?php the_field('portfolio_title'); ?></h2>
 			<hr>
 		</div>
-		<div id="filters" class="button-group">  
-			<button class="button is-checked" data-filter="*">show all</button>
-			<button class="button" data-filter=".metal">metal</button>
-			<button class="button" data-filter=".transition">transition</button>
-			<button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
-		</div>
-		<section class='portfolioContainer row grid'>
+		<section class='portfolioContainer row'>
 			<?php 
 				$portfolioArgs = array(
 					'post_type' => 'portfolio',
 					'posts_per_page' => -1,
-					'order' => 'ASC',
-					'orderby' => 'title'
+					'order' => 'ASC'
 				);
 				$portfolioQuery = new WP_Query($portfolioArgs);
 					if( $portfolioQuery -> have_posts() ) {
 						while( $portfolioQuery -> have_posts() ) {
 							$portfolioQuery-> the_post();
 			?>
-				<section class='portfolioItem three columns grid-item'>
+				<section class='portfolioItem three columns'>
 					<?php $portfolioImage = get_field('image'); ?>
-					<a href="<?php the_permalink() ?>">
-						<img src="<?php echo $portfolioImage['url']?>" />
-					</a>
+					<figure class='portfolioImage'>
+						<a href="<?php the_permalink() ?>">
+							<img src="<?php echo $portfolioImage['url']?>" />
+							<figcaption><h4><?php the_title(); ?></h4></figcaption>
+						</a>							
+					</figure>
 				</section>
 					<?php
 				}
@@ -276,17 +278,35 @@ if(have_posts()) {
 		<section class='contactContainer row'>
 			<aside class='contactInfo four columns'>
 				<h3><?php the_field('contact_info_title'); ?></h3>
+				<div class=''>
+					<span>
+						<div class='icon'><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></div>
+						<p><?php the_field('address'); ?></p>
+					</span>
+					<span>
+						<div class='icon'><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></div>
+						<p><a href='mailto:<?php the_field("email_address"); ?>'><?php the_field("email_address"); ?></a></p>
+					</span>
+					<span>
+						<div class='icon'><i class="fa fa-phone fa-2x" aria-hidden="true"></i></div>
+						<p><?php the_field('phone_number'); ?></p>
+					</span>
+				</div>
 			</aside>
 			<section class='contactForm eight columns'>
 				<h3><?php the_field('contact_form_title'); ?></h3>
 				<form action="http://www.focuspocus.io/magic/72feebeb74fc2c5eba3f55941579214a" method="POST">
-				<div class='formInputs'>
-					<input type="text" name="Name" placeholder="Name">
-					<input type="email" name="Email Address" placeholder="Email">
+				<div class='formInputs row'>
+					<div class='six columns'>
+						<input type="text" name="Name" placeholder="Name">
+					</div>
+					<div class='six columns'>
+						<input type="email" name="Email Address" placeholder="Email">
+					</div>
 				</div>
-				<div class="formMessage"> 
-					<textarea cols="30" rows="10" name="Message" placeholder="Message"></textarea>
-					<input type="submit" value="Send">
+				<div class="formMessage row"> 
+					<textarea cols="30" rows="4" name="Message" placeholder="Message"></textarea>
+					<input type="submit" value="Send Message">
 				</div>
 				</form>
 			</section>
