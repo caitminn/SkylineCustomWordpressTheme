@@ -1,0 +1,39 @@
+<!-- TESTIMONIALS SECTION -->
+<section class='testimonials' id='testimonials'>
+	<section class='container'>
+		<div class='sectionTitle'>
+			<h2>Testimonials</h2>
+			<hr>
+		</div>
+		<section class='testimonialsContainer row'> 
+			<div class='testimonialsContent four columns'>
+				<blockquote><p><?php the_field('testimonial_1_content'); ?></p></blockquote>
+				<?php $endorser1 = get_field('testimonial_1_endorser_image'); ?>
+				<div class='endorserContent'>
+					<img src="<?php echo $endorser1['url']?>" />
+					<h6><?php the_field('testimonial_1_endorser_name'); ?></h6>
+					<p><?php the_field('testimonial_1_endorser_job_title'); ?></p>
+				</div>
+			</div>
+			<div class='testimonialsContent four columns'>
+				<blockquote><p><?php the_field('testimonial_2_content'); ?></p></blockquote>
+				<?php $endorser2 = get_field('testimonial_2_endorser_image'); ?>
+				<div class='endorserContent'>
+					<img src="<?php echo $endorser2['url']?>" />
+					<h6><?php the_field('testimonial_2_endorser_name'); ?></h6>
+					<p><?php the_field('testimonial_2_endorser_job_title'); ?></p>
+				</div>
+			</div>
+			<div class='testimonialsContent four columns'>
+				<blockquote><p><?php the_field('testimonial_3_content'); ?></p></blockquote>
+				<?php $endorser3 = get_field('testimonial_3_endorser_image'); ?>
+				<div class='endorserContent'>
+					<img src="<?php echo $endorser3['url']?>" />
+					<h6><?php the_field('testimonial_3_endorser_name'); ?></h6>
+					<p><?php the_field('testimonial_3_endorser_job_title'); ?></p>
+				</div>
+			</div>
+		</section> <!-- close .testimonialsContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .testimonials -->
+<!-- TESTIMONIALS ENDS -->
