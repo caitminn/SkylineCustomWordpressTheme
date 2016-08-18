@@ -135,66 +135,39 @@ if(have_posts()) {
 			<hr>
 		</div>
 		<section class='teamContainer row'> 
+			<?php 
+				$teamArgs = array(
+					'post_type' => 'teammembers',
+					'posts_per_page' => 4,
+					'order' => 'ASC'
+				);
+				$teamQuery = new WP_Query($teamArgs);
+					if( $teamQuery -> have_posts() ) {
+						while( $teamQuery -> have_posts() ) {
+							$teamQuery -> the_post();
+			?>
 			<div class='teamContent three columns'>
-				<?php $teamMember1 = get_field('team_member_1_photo'); ?>
-				<img src="<?php echo $teamMember1['url']?> "/>
-				<h5><?php the_field('team_member_1_name'); ?></h5>
-				<p><?php the_field('team_member_1_title'); ?></p>
-				<span>
-					<a href=" <?php the_field('team_member_1_social_link_1'); ?> "> <?php the_field('team_member_1_social_icon_1'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_1_social_link_2'); ?> "> <?php the_field('team_member_1_social_icon_2'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_1_social_link_3'); ?> "> <?php the_field('team_member_1_social_icon_3'); ?></a>
-				</span>
+				<?php $teamMemberImage = get_field('image'); ?>
+				<img src=" <?php echo $teamMemberImage['url']?> "/>
+				<h5><?php the_field('name'); ?></h5>
+				<p><?php the_field('job_title'); ?></p>
+				<div class='socialIcons'>
+					<span>
+						<a href=" <?php the_field('social_media_link_1'); ?> "> <?php the_field('social_media_icon_1'); ?></a>
+					</span>
+					<span>
+						<a href=" <?php the_field('social_media_link_2'); ?> "> <?php the_field('social_media_icon_2'); ?></a>
+					</span>
+					<span>
+						<a href=" <?php the_field('social_media_link_3'); ?> "> <?php the_field('social_media_icon_3'); ?></a>
+					</span>
+				</div>
 			</div>
-			<div class='teamContent three columns'>
-				<?php $teamMember2 = get_field('team_member_2_photo'); ?>
-				<img src=" <?php echo $teamMember2['url']?> "/>
-				<h5><?php the_field('team_member_2_name'); ?></h5>
-				<p><?php the_field('team_member_2_title'); ?></p>
-				<span>
-					<a href=" <?php the_field('team_member_2_social_link_1'); ?> "> <?php the_field('team_member_2_social_icon_1'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_2_social_link_2'); ?> "> <?php the_field('team_member_2_social_icon_2'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_2_social_link_3'); ?> "> <?php the_field('team_member_2_social_icon_3'); ?></a>
-				</span>
-			</div>
-			<div class='teamContent three columns'>
-				<?php $teamMember3 = get_field('team_member_3_photo'); ?>
-				<img src="<?php echo $teamMember3['url']?>" />
-				<h5><?php the_field('team_member_3_name'); ?></h5>
-				<p><?php the_field('team_member_3_title'); ?></p>
-				<span>
-					<a href=" <?php the_field('team_member_3_social_link_1'); ?> "> <?php the_field('team_member_3_social_icon_1'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_3_social_link_2'); ?> "> <?php the_field('team_member_3_social_icon_2'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_3_social_link_3'); ?> "> <?php the_field('team_member_3_social_icon_3'); ?></a>
-				</span>
-			</div>
-			<div class='teamContent three columns'>
-				<?php $teamMember4 = get_field('team_member_4_photo'); ?>
-				<img src="<?php echo $teamMember4['url']?>" />
-				<h5><?php the_field('team_member_4_name'); ?></h5>
-				<p><?php the_field('team_member_4_title'); ?></p>
-				<span>
-					<a href=" <?php the_field('team_member_4_social_link_1'); ?> "> <?php the_field('team_member_4_social_icon_1'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_4_social_link_2'); ?> "> <?php the_field('team_member_4_social_icon_2'); ?></a>
-				</span>
-				<span>
-					<a href=" <?php the_field('team_member_4_social_link_3'); ?> "> <?php the_field('team_member_4_social_icon_3'); ?></a>
-				</span>
-			</div>
+					<?php
+				}
+			}
+			wp_reset_postdata();
+        ?>
 		</section> <!-- close .teamContainer -->
 	</section> <!-- close .container -->
 </section> <!-- close .team -->
@@ -224,6 +197,46 @@ if(have_posts()) {
 	</section> <!-- close .container -->
 </section> <!-- close .counter -->
 <!-- COUNTER ENDS -->
+
+<!-- TESTIMONIALS SECTION -->
+<section class='testimonials' id='testimonials'>
+	<section class='container'>
+		<div class='sectionTitle'>
+			<h2>Testimonials</h2>
+			<hr>
+		</div>
+		<section class='testimonialsContainer row'> 
+			<?php 
+				$testimonialArgs = array(
+					'post_type' => 'testimonials',
+					'posts_per_page' => 3,
+					'order' => 'ASC'
+				);
+				$testimonialQuery = new WP_Query($testimonialArgs);
+					if( $testimonialQuery -> have_posts() ) {
+						while( $testimonialQuery -> have_posts() ) {
+							$testimonialQuery -> the_post();
+			?>
+			<div class='testimonialsContent four columns'>
+				<blockquote><p><?php the_field('testimonial_content'); ?></p></blockquote>
+				<?php $endorser = get_field('endorser_image'); ?>
+				<div class='endorserContent'>
+					<img class='endorser' src="<?php echo $endorser['url']?>" />
+					<div class='content'>
+						<h6><?php the_field('endorser_name'); ?></h6>
+						<p><?php the_field('endorser_job_title'); ?></p>
+					</div>
+				</div>
+			</div>
+					<?php
+				}
+			}
+			wp_reset_postdata();
+        ?>
+		</section> <!-- close .testimonialsContainer -->
+	</section> <!-- close .container -->
+</section> <!-- close .testimonials -->
+<!-- TESTIMONIALS ENDS -->
 
 <!-- CONTACT SECTION -->
 <section class='contact' id='contact'>

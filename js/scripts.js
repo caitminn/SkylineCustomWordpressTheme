@@ -43,7 +43,7 @@ $(function(){
 		$('#menu-main-menu').toggleClass('show');
 
 		if ($('#menu-main-menu').css('background') != null) {
-            $('#menu-main-menu').css('background', 'rgba(230, 230, 230, 0.7)');
+            $('#menu-main-menu').css('background', 'rgba(230, 230, 230, 0.95)');
          }
          else {
             $('#menu-main-menu').css('background', 'none');
