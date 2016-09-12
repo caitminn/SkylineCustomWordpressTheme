@@ -70,7 +70,7 @@ function hackeryou_scripts() {
 
   wp_enqueue_script(
   	'isotope',
-  	"https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js",
+  	"https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.min.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
